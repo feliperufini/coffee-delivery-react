@@ -1,9 +1,13 @@
-function App() {
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
+import { ShoppingCartContextProvider } from './context/ShoppingCartContext'
+
+export function App() {
   return (
-    <>
-      <h1>Coffee Delivery</h1>
-    </>
+    <BrowserRouter>
+      <ShoppingCartContextProvider>
+        <Router />
+      </ShoppingCartContextProvider>
+    </BrowserRouter>
   )
 }
-
-export default App
