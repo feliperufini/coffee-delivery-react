@@ -58,6 +58,11 @@ h5 {
   font-size: 1.8em;
 }
 
+.payment-mode button.active {
+  background-color: #dcfce7d9;
+  border: 1px solid #166534;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #242424;

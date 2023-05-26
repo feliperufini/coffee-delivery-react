@@ -27,20 +27,20 @@ export function CoffeeListItem({ src, tags, title, description, price }: { src: 
           <h5>{formattedPrice}</h5>
         </div>
         <div className="col-span-7 flex gap-2">
-          <div className="flex gap-4 px-3 rounded-md bg-amber-100">
+          <div className="flex gap-4 px-3 rounded-md bg-amber-100 text-amber-900">
             <p
-              className="text-2xl mt-[-5px] cursor-pointer [-webkit-user-select:none]"
+              className="text-2xl mt-[-5px] cursor-pointer [-webkit-user-select:none] hover:font-medium"
               onClick={() => { setAmount(amount === 1 ? 1 : amount - 1) }}
             >_</p>
-            <p className="text-xl self-center font-medium [-webkit-user-select:none]">{amount}</p>
+            <p className="text-xl self-center font-medium [-webkit-user-select:none] hover:font-medium">{amount}</p>
             <p
-              className="text-2xl self-center cursor-pointer [-webkit-user-select:none]"
+              className="text-2xl self-center cursor-pointer [-webkit-user-select:none] hover:font-medium"
               onClick={() => { setAmount(amount === 99 ? 99 : amount + 1) }}
             >+</p>
           </div>
           <button
-            className="w-[38px] h-[38px] rounded-md bg-amber-900 text-zinc-100 [text-align:-webkit-center]"
-            onClick={() => { addProductToCart(title, amount) }}
+            className="w-[38px] h-[38px] rounded-md bg-amber-900 text-zinc-100 [text-align:-webkit-center] hover:bg-amber-800"
+            onClick={() => { addProductToCart(title, src, amount, price) }}
           >
             <ShoppingCart size={22} weight="fill" />
           </button>

@@ -1,14 +1,16 @@
 import { ReactNode, createContext, useState } from "react";
 
 interface ShoppingCart {
-  id: string
+  name: string
+  src: string
   amount: number
+  price: number
 }
 
 interface ShoppingCartContextType {
   productsCart: ShoppingCart[]
-  addProductToCart: (id: string, amountAdd: number) => void
-  removeProductToCart: (id: string, amountAdd: number) => void
+  addProductToCart: (name: string, src: string, amountAdd: number, price: number) => void
+  removeProductToCart: (name: string, amountAdd: number) => void
 }
 
 export const ShoppingCartContext = createContext({} as ShoppingCartContextType)
@@ -20,13 +22,13 @@ interface ShoppingCartContextProviderProps {
 export function ShoppingCartContextProvider({ children }: ShoppingCartContextProviderProps) {
   const [productsCart, setProductsCart] = useState<ShoppingCart[]>([])
 
-  function addProductToCart(id: string, amountAdd: number) {
+  function addProductToCart(name: string, src: string, amountAdd: number, price: number) {
     const copyProductCart = [...productsCart]
 
-    const item = copyProductCart.find((product) => product.id === id)
+    const item = copyProductCart.find((product) => product.name === name)
 
     if (!item) {
-      copyProductCart.push({ id: id, amount: amountAdd })
+      copyProductCart.push({ name: name, src: src, amount: amountAdd, price: price })
     } else {
       item.amount = item.amount + amountAdd
     }
@@ -34,17 +36,17 @@ export function ShoppingCartContextProvider({ children }: ShoppingCartContextPro
     setProductsCart(copyProductCart)
   }
 
-  function removeProductToCart(id: string, amountSub: number) {
+  function removeProductToCart(name: string, amountSub: number) {
     const copyProductCart = [...productsCart]
 
-    const item = copyProductCart.find((product) => product.id === id)
+    const item = copyProductCart.find((product) => product.name === name)
     const newAmount = item ? item.amount - amountSub : 0
 
     if (item && newAmount > 0) {
       item.amount = newAmount
       setProductsCart(copyProductCart)
     } else {
-      const arrayFiltered = copyProductCart.filter((product) => product.id !== id)
+      const arrayFiltered = copyProductCart.filter((product) => product.name !== name)
       setProductsCart(arrayFiltered)
     }
   }
