@@ -38,7 +38,7 @@ export function CheckoutOrder() {
 
   const submitOrder = () => {
     console.log(formData)
-    navigate('/confirmed');
+    navigate('/confirmed', { state: { formData } });
   }
 
   return (

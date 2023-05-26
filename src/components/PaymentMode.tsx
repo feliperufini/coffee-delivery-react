@@ -19,7 +19,7 @@ export function PaymentMode({ formData }: ComponenteProps) {
       newButton.classList.add('active');
       selectedButton = newButton;
       if (mode === 1) {
-        formData.paymentType = 'credt'
+        formData.paymentType = 'credit'
       } else if (mode === 2) {
         formData.paymentType = 'debit'
       } else if (mode === 3) {
