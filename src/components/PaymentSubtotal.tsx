@@ -25,7 +25,7 @@ export function PaymentSubtotal({ submitOrder }: ComponenteProps) {
   return (
     <div className="bg-stone-200 p-10 rounded-tr-3xl rounded-bl-3xl rounded-tl-md rounded-br-md">
       {productsCart.map((orderItem) => (
-        <CoffeePaymentItem coffeeData={orderItem} addProductToCart={addProductToCart} removeProductToCart={removeProductToCart} />
+        <CoffeePaymentItem key={orderItem.name} coffeeData={orderItem} addProductToCart={addProductToCart} removeProductToCart={removeProductToCart} />
       ))}
       <div className="grid grid-cols-2 gap-4 text-lg mb-4">
         <div>

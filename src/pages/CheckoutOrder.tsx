@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { DeliveryAddress } from "../components/DeliveryAddress";
 import { PaymentMode } from "../components/PaymentMode";
 import { PaymentSubtotal } from "../components/PaymentSubtotal";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../context/ShoppingCartContext";
 
 export interface FormProps {
   cep: string,
@@ -17,6 +19,7 @@ export interface FormProps {
 
 export function CheckoutOrder() {
   const navigate = useNavigate();
+  const { productsCart, clearCart } = useContext(ShoppingCartContext)
   const [formData, setFormData] = useState<FormProps>({
     cep: '',
     rua: '',
@@ -37,8 +40,16 @@ export function CheckoutOrder() {
   }
 
   const submitOrder = () => {
-    console.log(formData)
-    navigate('/confirmed', { state: { formData } });
+    console.log(productsCart)
+
+    if (productsCart.length === 0) {
+      alert('Não existem itens adicionados ao carrinho!')
+    } else if (formData.cep && formData.rua && formData.numero && formData.bairro && formData.cidade && formData.uf && formData.paymentType) {
+      clearCart()
+      navigate('/confirmed', { state: { formData } });
+    } else {
+      alert('O formulário não foi preenchido corretamente!')
+    }
   }
 
   return (

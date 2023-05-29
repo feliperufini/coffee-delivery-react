@@ -63,6 +63,11 @@ h5 {
   border: 1px solid #166534;
 }
 
+.bg-gradient {
+  background: linear-gradient(#f1f1f1, #f1f1f1) padding-box, linear-gradient(to right, #ffba55, #8e6cd8) border-box;
+  border: 2px solid transparent;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #242424;
