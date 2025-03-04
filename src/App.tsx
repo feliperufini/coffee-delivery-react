@@ -3,11 +3,11 @@ import { Router } from './Router'
 import { ShoppingCartContextProvider } from './context/ShoppingCartContext'
 
 export function App() {
-  return (
-    <BrowserRouter>
-      <ShoppingCartContextProvider>
-        <Router />
-      </ShoppingCartContextProvider>
-    </BrowserRouter>
-  )
+	return (
+		<BrowserRouter>
+			<ShoppingCartContextProvider>
+				<Router />
+			</ShoppingCartContextProvider>
+		</BrowserRouter>
+	)
 }
